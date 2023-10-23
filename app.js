@@ -1,7 +1,7 @@
 // This is very basic api for authentication of the admin dashboard.
-require("dotenv").config();
 const express = require("express");
 const app = express();
+require("dotenv").config();
 const authRouter = require("./routes/auth");
 const connectDb = require("./db/connectDb");
 const cors = require("cors");

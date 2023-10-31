@@ -46,6 +46,7 @@ const login = asyncWrapper(async (req, res) => {
   const token = jwt.sign({ email: req.body.email }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_LIFETIME,
   });
+
   res.status(StatusCodes.OK).json({
     msg: "Login is Successful. Redirecting...",
     name: user.firstName,

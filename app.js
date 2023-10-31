@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const authRouter = require("./routes/auth");
+const userRouter = require("./routes/user");
 const connectDb = require("./db/connectDb");
 const cors = require("cors");
 const errorHandler = require("./middleware/errorHandler");
@@ -16,9 +17,6 @@ app.use(cors());
 app.use(helmet());
 app.use(xss());
 
-// Configure Express to trust proxy headers
-app.set("trust proxy", true);
-
 app.use(
   rateLimiter({
     windowMs: 15 * 60 * 1000, // 15 minutes
@@ -26,6 +24,7 @@ app.use(
   })
 );
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/user", userRouter);
 app.use(notFound);
 app.use(errorHandler);
 

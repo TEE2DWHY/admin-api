@@ -3,6 +3,7 @@ const app = express();
 require("dotenv").config();
 const authRouter = require("./routes/auth");
 const userRouter = require("./routes/user");
+const authMiddleWare = require("./middleware/authentication");
 const connectDb = require("./db/connectDb");
 const cors = require("cors");
 const errorHandler = require("./middleware/errorHandler");
@@ -24,7 +25,7 @@ app.use(
   })
 );
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/user", userRouter);
+app.use("/api/v1/user", authMiddleWare, userRouter);
 app.use(notFound);
 app.use(errorHandler);
 

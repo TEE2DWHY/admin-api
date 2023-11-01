@@ -16,8 +16,8 @@ const authorization = async (req, res, next) => {
         msg: "Invalid token.",
       });
     }
-    const { email } = payload;
-    req.user = { email };
+    const { id } = payload;
+    req.user = { id };
     next();
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

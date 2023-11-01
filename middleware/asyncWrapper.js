@@ -1,5 +1,3 @@
-const { StatusCodes } = require("http-status-codes");
-
 const asyncWrapper = (fn) => {
   return async (req, res, next) => {
     try {

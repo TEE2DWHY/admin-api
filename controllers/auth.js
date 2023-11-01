@@ -43,7 +43,7 @@ const login = asyncWrapper(async (req, res) => {
       msg: "Invalid credentials.",
     });
   }
-  const token = jwt.sign({ email: req.body.email }, process.env.JWT_SECRET, {
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_LIFETIME,
   });
 

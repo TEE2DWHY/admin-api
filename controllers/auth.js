@@ -40,7 +40,7 @@ const login = asyncWrapper(async (req, res) => {
   const passwordMatch = await bcrypt.compare(req.body.password, user.password);
   if (!passwordMatch) {
     return res.status(StatusCodes.UNAUTHORIZED).json({
-      msg: "Invalid credentials.",
+      msg: "Incorrect email or password.",
     });
   }
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
